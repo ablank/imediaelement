@@ -1,16 +1,3 @@
-<<<<<<< Updated upstream
-module.exports = function(grunt) {
-  // Measure the time each task takes.
-  require('time-grunt')(grunt);
-  // Load grunt tasks.
-  require('load-grunt-config')(grunt, {
-        loadGruntTasks: {
-            pattern: ['grunt-*'],
-            scope: 'devDependencies',
-            config: require('./package.json')
-        }
-    });
-=======
 module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-shell');
@@ -258,5 +245,4 @@ module.exports = function (grunt) {
     });
     grunt.log.writeln(result);
   });
->>>>>>> Stashed changes
 };

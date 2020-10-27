@@ -1,31 +1,17 @@
 {
   "name": "mediaelement",
-  "version": "2.16.3",
+  "license": "MIT",
+  "version": "4.2.16",
+  "main": "full.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/johndyer/mediaelement.git"
+    "url": "https://github.com/mediaelement/mediaelement.git"
   },
+  "bugs": {
+    "url": "https://github.com/mediaelement/mediaelement/issues?q=is%3Aissue+is%3Aopen+label%3ABug"
+  },
+  "private": false,
   "devDependencies": {
-<<<<<<< Updated upstream
-    "grunt": "~0.4.1",
-    "load-grunt-config": "*",
-    "grunt-concurrent": "*",
-    "grunt-contrib-uglify": "^2.0.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-cssmin": "~0.6.1",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-imagemin": "^1.0.1",
-    "grunt-shell": "~1.1.1",
-    "grunt-text-replace": "~0.3.12",
-    "grunt-contrib-clean": "~0.6.0",
-    "grunt-remove-logging": "~0.2.0",
-    "grunt-contrib-compass": "^1.0.1",
-    "grunt-csscomb": "^3.0.0",
-    "grunt-autoprefixer": "^2.2.0",
-    "grunt-newer": "^1.1.0",
-    "grunt-svg2png": "^0.2.7",
-    "grunt-contrib-jshint": "^0.11.1"
-=======
     "autoprefixer": "^6.7.7",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.26.3",
@@ -68,9 +54,40 @@
     "stylelint": "^7.10.1",
     "stylelint-order": "^0.4.4",
     "uglify-js": "^3.0.10"
->>>>>>> Stashed changes
   },
   "dependencies": {
-    "time-grunt": "*"
+    "global": "^4.3.1"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --compilers js:babel-register --require babel-polyfill --recursive test/unit",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+  },
+  "browserify": {
+    "extensions": [
+      ".js"
+    ],
+    "transform": [
+      [
+        "babelify",
+        {
+          "comments": false,
+          "presets": [
+            [
+              "env",
+              {
+                "targets": {
+                  "browsers": [
+                    "last 5 versions",
+                    "ie > 10",
+                    "ios > 7",
+                    "android > 3"
+                  ]
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    ]
   }
 }
