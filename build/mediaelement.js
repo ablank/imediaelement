@@ -277,6 +277,148 @@ module.exports = win;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var config = exports.config = {
+  poster: '',
+
+  showPosterWhenEnded: false,
+
+  showPosterWhenPaused: false,
+
+  defaultVideoWidth: 480,
+
+  defaultVideoHeight: 270,
+
+  videoWidth: -1,
+
+  videoHeight: -1,
+
+  defaultAudioWidth: 400,
+
+  defaultAudioHeight: 40,
+
+  defaultSeekBackwardInterval: function defaultSeekBackwardInterval(media) {
+    return media.getDuration() * 0.05;
+  },
+
+  defaultSeekForwardInterval: function defaultSeekForwardInterval(media) {
+    return media.getDuration() * 0.05;
+  },
+
+  setDimensions: true,
+
+  audioWidth: -1,
+
+  audioHeight: -1,
+
+  loop: false,
+
+  autoRewind: true,
+
+  enableAutosize: true,
+
+  timeFormat: '',
+
+  alwaysShowHours: false,
+
+  showTimecodeFrameCount: false,
+
+  framesPerSecond: 25,
+
+  alwaysShowControls: false,
+
+  hideVideoControlsOnLoad: false,
+
+  hideVideoControlsOnPause: false,
+
+  clickToPlayPause: true,
+
+  controlsTimeoutDefault: 1500,
+
+  controlsTimeoutMouseEnter: 2500,
+
+  controlsTimeoutMouseLeave: 1000,
+
+  iPadUseNativeControls: false,
+
+  iPhoneUseNativeControls: false,
+
+  AndroidUseNativeControls: false,
+
+  features: ['playpause', 'current', 'progress', 'duration', 'tracks', 'volume', 'fullscreen'],
+
+  featureText: {
+    downloadFile: "Download File",
+
+    videoPlayer: "Video Player",
+    audioPlayer: "Audio Player",
+
+    flashRequired: "You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https://get.adobe.com/flashplayer/",
+
+    play: "Play",
+    pause: "Pause",
+
+    current: "Current",
+    progress: "Progress",
+    duration: "Duration",
+    tracks: "Tracks",
+
+    volumeSlider: "Volume Control",
+    volumeHelpText: "Use Up/Down Arrow keys to increase or decrease volume.",
+    mute: "Mute",
+    unmute: "Unmute",
+
+    fullscreen: "Fullscreen",
+
+    timeSlider: "Play Time",
+    timeHelpText: "Use Left/Right Arrow keys to advance one second, Up/Down arrows to advance ten seconds.",
+    liveBroadcast: "Live Broadcast",
+
+    captionsSubtitles: "Captions/Subtitles",
+    captionsChapters: "Chapters",
+    none: "None",
+
+    languages: []
+  },
+
+  useDefaultControls: false,
+
+  isVideo: true,
+
+  stretching: 'auto',
+
+  classPrefix: 'mejs__',
+
+  enableKeyboard: true,
+
+  pauseOtherPlayers: true,
+
+  secondsDecimalLength: 0,
+
+  customError: null,
+
+  keyActions: [{
+    keys: [32, 179],
+    action: function action(player) {
+
+      if (!IS_FIREFOX) {
+        if (player.paused || player.ended) {
+          player.play();
+        } else {
+          player.pause();
+        }
+      }
+    }
+  }]
+};
+
+exports.default = config;
+
+},{}],6:[function(_dereq_,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
@@ -290,17 +432,17 @@ var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _general = _dereq_(18);
+var _general = _dereq_(17);
 
-var _media2 = _dereq_(19);
+var _media2 = _dereq_(18);
 
-var _renderer = _dereq_(7);
+var _renderer = _dereq_(8);
 
-var _constants = _dereq_(16);
+var _constants = _dereq_(15);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -726,7 +868,7 @@ _mejs2.default.MediaElement = MediaElement;
 
 exports.default = MediaElement;
 
-},{"16":16,"18":18,"19":19,"2":2,"3":3,"6":6,"7":7}],6:[function(_dereq_,module,exports){
+},{"15":15,"17":17,"18":18,"2":2,"3":3,"7":7,"8":8}],7:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -758,7 +900,7 @@ _window2.default.mejs = mejs;
 
 exports.default = mejs;
 
-},{"3":3}],7:[function(_dereq_,module,exports){
+},{"3":3}],8:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -770,7 +912,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
@@ -872,364 +1014,7 @@ var renderer = exports.renderer = new Renderer();
 
 _mejs2.default.Renderers = renderer;
 
-},{"6":6}],8:[function(_dereq_,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _mejs = _dereq_(6);
-
-var _mejs2 = _interopRequireDefault(_mejs);
-
-var _en = _dereq_(9);
-
-var _general = _dereq_(18);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var i18n = { lang: 'en', en: _en.EN };
-
-i18n.language = function () {
-	for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-		args[_key] = arguments[_key];
-	}
-
-	if (args !== null && args !== undefined && args.length) {
-
-		if (typeof args[0] !== 'string') {
-			throw new TypeError('Language code must be a string value');
-		}
-
-		if (!/^[a-z]{2,3}((\-|_)[a-z]{2})?$/i.test(args[0])) {
-			throw new TypeError('Language code must have format 2-3 letters and. optionally, hyphen, underscore followed by 2 more letters');
-		}
-
-		i18n.lang = args[0];
-
-		if (i18n[args[0]] === undefined) {
-			args[1] = args[1] !== null && args[1] !== undefined && _typeof(args[1]) === 'object' ? args[1] : {};
-			i18n[args[0]] = !(0, _general.isObjectEmpty)(args[1]) ? args[1] : _en.EN;
-		} else if (args[1] !== null && args[1] !== undefined && _typeof(args[1]) === 'object') {
-			i18n[args[0]] = args[1];
-		}
-	}
-
-	return i18n.lang;
-};
-
-i18n.t = function (message) {
-	var pluralParam = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-
-	if (typeof message === 'string' && message.length) {
-
-		var str = void 0,
-		    pluralForm = void 0;
-
-		var language = i18n.language();
-
-		var _plural = function _plural(input, number, form) {
-
-			if ((typeof input === 'undefined' ? 'undefined' : _typeof(input)) !== 'object' || typeof number !== 'number' || typeof form !== 'number') {
-				return input;
-			}
-
-			var _pluralForms = function () {
-				return [function () {
-					return arguments.length <= 1 ? undefined : arguments[1];
-				}, function () {
-					return (arguments.length <= 0 ? undefined : arguments[0]) === 1 ? arguments.length <= 1 ? undefined : arguments[1] : arguments.length <= 2 ? undefined : arguments[2];
-				}, function () {
-					return (arguments.length <= 0 ? undefined : arguments[0]) === 0 || (arguments.length <= 0 ? undefined : arguments[0]) === 1 ? arguments.length <= 1 ? undefined : arguments[1] : arguments.length <= 2 ? undefined : arguments[2];
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 === 1 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 !== 11) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) !== 0) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1 || (arguments.length <= 0 ? undefined : arguments[0]) === 11) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 2 || (arguments.length <= 0 ? undefined : arguments[0]) === 12) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) > 2 && (arguments.length <= 0 ? undefined : arguments[0]) < 20) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 0 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 > 0 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 < 20) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 === 1 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 !== 11) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 >= 2 && ((arguments.length <= 0 ? undefined : arguments[0]) % 100 < 10 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 20)) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return [3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 === 1 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 !== 11) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 >= 2 && (arguments.length <= 0 ? undefined : arguments[0]) % 10 <= 4 && ((arguments.length <= 0 ? undefined : arguments[0]) % 100 < 10 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 20)) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) >= 2 && (arguments.length <= 0 ? undefined : arguments[0]) <= 4) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 >= 2 && (arguments.length <= 0 ? undefined : arguments[0]) % 10 <= 4 && ((arguments.length <= 0 ? undefined : arguments[0]) % 100 < 10 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 20)) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 === 1) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 === 2) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 === 3 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 === 4) {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					} else {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 2) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) > 2 && (arguments.length <= 0 ? undefined : arguments[0]) < 7) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) > 6 && (arguments.length <= 0 ? undefined : arguments[0]) < 11) {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					} else {
-						return arguments.length <= 5 ? undefined : arguments[5];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 0) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 2) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 3 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 <= 10) {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 11) {
-						return arguments.length <= 5 ? undefined : arguments[5];
-					} else {
-						return arguments.length <= 6 ? undefined : arguments[6];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 0 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 > 1 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 < 11) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 > 10 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 < 20) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 === 2) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					return (arguments.length <= 0 ? undefined : arguments[0]) !== 11 && (arguments.length <= 0 ? undefined : arguments[0]) % 10 === 1 ? arguments.length <= 1 ? undefined : arguments[1] : arguments.length <= 2 ? undefined : arguments[2];
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 >= 2 && (arguments.length <= 0 ? undefined : arguments[0]) % 10 <= 4 && ((arguments.length <= 0 ? undefined : arguments[0]) % 100 < 10 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 20)) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 2) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) !== 8 && (arguments.length <= 0 ? undefined : arguments[0]) !== 11) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					}
-				}, function () {
-					return (arguments.length <= 0 ? undefined : arguments[0]) === 0 ? arguments.length <= 1 ? undefined : arguments[1] : arguments.length <= 2 ? undefined : arguments[2];
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 2) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 3) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 0) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}];
-			}();
-
-			return _pluralForms[form].apply(null, [number].concat(input));
-		};
-
-		if (i18n[language] !== undefined) {
-			str = i18n[language][message];
-			if (pluralParam !== null && typeof pluralParam === 'number') {
-				pluralForm = i18n[language]['mejs.plural-form'];
-				str = _plural.apply(null, [str, pluralParam, pluralForm]);
-			}
-		}
-
-		if (!str && i18n.en) {
-			str = i18n.en[message];
-			if (pluralParam !== null && typeof pluralParam === 'number') {
-				pluralForm = i18n.en['mejs.plural-form'];
-				str = _plural.apply(null, [str, pluralParam, pluralForm]);
-			}
-		}
-
-		str = str || message;
-
-		if (pluralParam !== null && typeof pluralParam === 'number') {
-			str = str.replace('%1', pluralParam);
-		}
-
-		return (0, _general.escapeHTML)(str);
-	}
-
-	return message;
-};
-
-_mejs2.default.i18n = i18n;
-
-if (typeof mejsL10n !== 'undefined') {
-	_mejs2.default.i18n.language(mejsL10n.language, mejsL10n.strings);
-}
-
-exports.default = i18n;
-
-},{"18":18,"6":6,"9":9}],9:[function(_dereq_,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var EN = exports.EN = {
-	'mejs.plural-form': 1,
-
-	'mejs.download-file': 'Download File',
-
-	'mejs.install-flash': 'You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https://get.adobe.com/flashplayer/',
-
-	'mejs.fullscreen': 'Fullscreen',
-
-	'mejs.play': 'Play',
-	'mejs.pause': 'Pause',
-
-	'mejs.time-slider': 'Time Slider',
-	'mejs.time-help-text': 'Use Left/Right Arrow keys to advance one second, Up/Down arrows to advance ten seconds.',
-	'mejs.live-broadcast': 'Live Broadcast',
-
-	'mejs.volume-help-text': 'Use Up/Down Arrow keys to increase or decrease volume.',
-	'mejs.unmute': 'Unmute',
-	'mejs.mute': 'Mute',
-	'mejs.volume-slider': 'Volume Slider',
-
-	'mejs.video-player': 'Video Player',
-	'mejs.audio-player': 'Audio Player',
-
-	'mejs.captions-subtitles': 'Captions/Subtitles',
-	'mejs.captions-chapters': 'Chapters',
-	'mejs.none': 'None',
-	'mejs.afrikaans': 'Afrikaans',
-	'mejs.albanian': 'Albanian',
-	'mejs.arabic': 'Arabic',
-	'mejs.belarusian': 'Belarusian',
-	'mejs.bulgarian': 'Bulgarian',
-	'mejs.catalan': 'Catalan',
-	'mejs.chinese': 'Chinese',
-	'mejs.chinese-simplified': 'Chinese (Simplified)',
-	'mejs.chinese-traditional': 'Chinese (Traditional)',
-	'mejs.croatian': 'Croatian',
-	'mejs.czech': 'Czech',
-	'mejs.danish': 'Danish',
-	'mejs.dutch': 'Dutch',
-	'mejs.english': 'English',
-	'mejs.estonian': 'Estonian',
-	'mejs.filipino': 'Filipino',
-	'mejs.finnish': 'Finnish',
-	'mejs.french': 'French',
-	'mejs.galician': 'Galician',
-	'mejs.german': 'German',
-	'mejs.greek': 'Greek',
-	'mejs.haitian-creole': 'Haitian Creole',
-	'mejs.hebrew': 'Hebrew',
-	'mejs.hindi': 'Hindi',
-	'mejs.hungarian': 'Hungarian',
-	'mejs.icelandic': 'Icelandic',
-	'mejs.indonesian': 'Indonesian',
-	'mejs.irish': 'Irish',
-	'mejs.italian': 'Italian',
-	'mejs.japanese': 'Japanese',
-	'mejs.korean': 'Korean',
-	'mejs.latvian': 'Latvian',
-	'mejs.lithuanian': 'Lithuanian',
-	'mejs.macedonian': 'Macedonian',
-	'mejs.malay': 'Malay',
-	'mejs.maltese': 'Maltese',
-	'mejs.norwegian': 'Norwegian',
-	'mejs.persian': 'Persian',
-	'mejs.polish': 'Polish',
-	'mejs.portuguese': 'Portuguese',
-	'mejs.romanian': 'Romanian',
-	'mejs.russian': 'Russian',
-	'mejs.serbian': 'Serbian',
-	'mejs.slovak': 'Slovak',
-	'mejs.slovenian': 'Slovenian',
-	'mejs.spanish': 'Spanish',
-	'mejs.swahili': 'Swahili',
-	'mejs.swedish': 'Swedish',
-	'mejs.tagalog': 'Tagalog',
-	'mejs.thai': 'Thai',
-	'mejs.turkish': 'Turkish',
-	'mejs.ukrainian': 'Ukrainian',
-	'mejs.vietnamese': 'Vietnamese',
-	'mejs.welsh': 'Welsh',
-	'mejs.yiddish': 'Yiddish'
-};
-
-},{}],10:[function(_dereq_,module,exports){
+},{"7":7}],9:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -1238,19 +1023,19 @@ var _window = _dereq_(3);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _renderer = _dereq_(7);
+var _renderer = _dereq_(8);
 
-var _general = _dereq_(18);
+var _general = _dereq_(17);
 
-var _media = _dereq_(19);
+var _media = _dereq_(18);
 
-var _constants = _dereq_(16);
+var _constants = _dereq_(15);
 
-var _dom = _dereq_(17);
+var _dom = _dereq_(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1476,7 +1261,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(DashNativeRenderer);
 
-},{"16":16,"17":17,"18":18,"19":19,"3":3,"6":6,"7":7}],11:[function(_dereq_,module,exports){
+},{"15":15,"16":16,"17":17,"18":18,"3":3,"7":7,"8":8}],10:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1494,21 +1279,21 @@ var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _i18n = _dereq_(8);
+var _config = _dereq_(5);
 
-var _i18n2 = _interopRequireDefault(_i18n);
+var _config2 = _interopRequireDefault(_config);
 
-var _renderer = _dereq_(7);
+var _renderer = _dereq_(8);
 
-var _general = _dereq_(18);
+var _general = _dereq_(17);
 
-var _constants = _dereq_(16);
+var _constants = _dereq_(15);
 
-var _media = _dereq_(19);
+var _media = _dereq_(18);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1752,7 +1537,7 @@ var FlashMediaElementRenderer = {
 				settings.push('style="clip: rect(0 0 0 0); position: absolute;"');
 			}
 
-			specialIEContainer.outerHTML = '<object ' + settings.join(' ') + '>' + ('<param name="movie" value="' + flash.options.pluginPath + flash.options.filename + '?x=' + new Date() + '" />') + ('<param name="flashvars" value="' + flashVars.join('&amp;') + '" />') + '<param name="quality" value="high" />' + '<param name="bgcolor" value="#000000" />' + '<param name="wmode" value="transparent" />' + ('<param name="allowScriptAccess" value="' + flash.options.shimScriptAccess + '" />') + '<param name="allowFullScreen" value="true" />' + ('<div>' + _i18n2.default.t('mejs.install-flash') + '</div>') + '</object>';
+			specialIEContainer.outerHTML = '<object ' + settings.join(' ') + '>' + ('<param name="movie" value="' + flash.options.pluginPath + flash.options.filename + '?x=' + new Date() + '" />') + ('<param name="flashvars" value="' + flashVars.join('&amp;') + '" />') + '<param name="quality" value="high" />' + '<param name="bgcolor" value="#000000" />' + '<param name="wmode" value="transparent" />' + ('<param name="allowScriptAccess" value="' + flash.options.shimScriptAccess + '" />') + '<param name="allowFullScreen" value="true" />' + ('<div>' + _config2.default.featureText.flashRequired + '</div>') + '</object>';
 		} else {
 
 			settings = ['id="__' + flash.id + '"', 'name="__' + flash.id + '"', 'play="true"', 'loop="false"', 'quality="high"', 'bgcolor="#000000"', 'wmode="transparent"', 'allowScriptAccess="' + flash.options.shimScriptAccess + '"', 'allowFullScreen="true"', 'type="application/x-shockwave-flash"', 'pluginspage="//www.macromedia.com/go/getflashplayer"', 'src="' + flash.options.pluginPath + flash.options.filename + '"', 'flashvars="' + flashVars.join('&') + '"'];
@@ -1918,7 +1703,7 @@ if (hasFlash) {
 	_renderer.renderer.add(FlashMediaElementAudioOggRenderer);
 }
 
-},{"16":16,"18":18,"19":19,"2":2,"3":3,"6":6,"7":7,"8":8}],12:[function(_dereq_,module,exports){
+},{"15":15,"17":17,"18":18,"2":2,"3":3,"5":5,"7":7,"8":8}],11:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -1927,19 +1712,19 @@ var _window = _dereq_(3);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _renderer = _dereq_(7);
+var _renderer = _dereq_(8);
 
-var _general = _dereq_(18);
+var _general = _dereq_(17);
 
-var _constants = _dereq_(16);
+var _constants = _dereq_(15);
 
-var _media = _dereq_(19);
+var _media = _dereq_(18);
 
-var _dom = _dereq_(17);
+var _dom = _dereq_(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2167,7 +1952,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(FlvNativeRenderer);
 
-},{"16":16,"17":17,"18":18,"19":19,"3":3,"6":6,"7":7}],13:[function(_dereq_,module,exports){
+},{"15":15,"16":16,"17":17,"18":18,"3":3,"7":7,"8":8}],12:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -2176,19 +1961,19 @@ var _window = _dereq_(3);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _renderer = _dereq_(7);
+var _renderer = _dereq_(8);
 
-var _general = _dereq_(18);
+var _general = _dereq_(17);
 
-var _constants = _dereq_(16);
+var _constants = _dereq_(15);
 
-var _media = _dereq_(19);
+var _media = _dereq_(18);
 
-var _dom = _dereq_(17);
+var _dom = _dereq_(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2456,7 +2241,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(HlsNativeRenderer);
 
-},{"16":16,"17":17,"18":18,"19":19,"3":3,"6":6,"7":7}],14:[function(_dereq_,module,exports){
+},{"15":15,"16":16,"17":17,"18":18,"3":3,"7":7,"8":8}],13:[function(_dereq_,module,exports){
 'use strict';
 
 var _window = _dereq_(3);
@@ -2467,15 +2252,15 @@ var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _renderer = _dereq_(7);
+var _renderer = _dereq_(8);
 
-var _general = _dereq_(18);
+var _general = _dereq_(17);
 
-var _constants = _dereq_(16);
+var _constants = _dereq_(15);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2603,7 +2388,7 @@ _window2.default.HtmlMediaElement = _mejs2.default.HtmlMediaElement = HtmlMediaE
 
 _renderer.renderer.add(HtmlMediaElement);
 
-},{"16":16,"18":18,"2":2,"3":3,"6":6,"7":7}],15:[function(_dereq_,module,exports){
+},{"15":15,"17":17,"2":2,"3":3,"7":7,"8":8}],14:[function(_dereq_,module,exports){
 'use strict';
 
 var _window = _dereq_(3);
@@ -2614,17 +2399,17 @@ var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _renderer = _dereq_(7);
+var _renderer = _dereq_(8);
 
-var _general = _dereq_(18);
+var _general = _dereq_(17);
 
-var _media = _dereq_(19);
+var _media = _dereq_(18);
 
-var _dom = _dereq_(17);
+var _dom = _dereq_(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3142,7 +2927,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(YouTubeIframeRenderer);
 
-},{"17":17,"18":18,"19":19,"2":2,"3":3,"6":6,"7":7}],16:[function(_dereq_,module,exports){
+},{"16":16,"17":17,"18":18,"2":2,"3":3,"7":7,"8":8}],15:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3158,7 +2943,7 @@ var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
@@ -3328,7 +3113,7 @@ _mejs2.default.Features.isFullScreen = isFullScreen;
 _mejs2.default.Features.requestFullScreen = requestFullScreen;
 _mejs2.default.Features.cancelFullScreen = cancelFullScreen;
 
-},{"2":2,"3":3,"6":6}],17:[function(_dereq_,module,exports){
+},{"2":2,"3":3,"7":7}],16:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3352,7 +3137,7 @@ var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
@@ -3557,7 +3342,7 @@ _mejs2.default.Utils.visible = visible;
 _mejs2.default.Utils.ajax = ajax;
 _mejs2.default.Utils.loadScript = loadScript;
 
-},{"2":2,"3":3,"6":6}],18:[function(_dereq_,module,exports){
+},{"2":2,"3":3,"7":7}],17:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3571,7 +3356,7 @@ exports.createEvent = createEvent;
 exports.isNodeAfter = isNodeAfter;
 exports.isString = isString;
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
@@ -3693,7 +3478,7 @@ _mejs2.default.Utils.createEvent = createEvent;
 _mejs2.default.Utils.isNodeAfter = isNodeAfter;
 _mejs2.default.Utils.isString = isString;
 
-},{"6":6}],19:[function(_dereq_,module,exports){
+},{"7":7}],18:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3707,11 +3492,11 @@ exports.getTypeFromFile = getTypeFromFile;
 exports.getExtension = getExtension;
 exports.normalizeExtension = normalizeExtension;
 
-var _mejs = _dereq_(6);
+var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _general = _dereq_(18);
+var _general = _dereq_(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3818,7 +3603,7 @@ _mejs2.default.Utils.getTypeFromFile = getTypeFromFile;
 _mejs2.default.Utils.getExtension = getExtension;
 _mejs2.default.Utils.normalizeExtension = normalizeExtension;
 
-},{"18":18,"6":6}],20:[function(_dereq_,module,exports){
+},{"17":17,"7":7}],19:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -3971,4 +3756,4 @@ if (!window.Promise) {
 	}
 })(window.Node || window.Element);
 
-},{"2":2,"4":4}]},{},[20,5,14,11,10,12,13,15]);
+},{"2":2,"4":4}]},{},[19,6,13,10,9,11,12,14]);

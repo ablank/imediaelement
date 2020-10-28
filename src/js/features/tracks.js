@@ -2,7 +2,6 @@
 
 import document from 'global/document';
 import mejs from '../core/mejs';
-import i18n from '../features/i18n';
 import config from '../core/config';
 import MediaElementPlayer from '../player';
 import {convertSMPTEtoSeconds} from '../utils/time';
@@ -81,8 +80,8 @@ Object.assign(MediaElementPlayer.prototype, {
 		const
 			t = this,
 			attr = t.options.tracksAriaLive ? ' role="log" aria-live="assertive" aria-atomic="false"' : '',
-			tracksTitle = isString(t.options.tracksText) ? t.options.tracksText : i18n.t('mejs.captions-subtitles'),
-			chaptersTitle = isString(t.options.chaptersText) ? t.options.chaptersText : i18n.t('mejs.captions-chapters'),
+			tracksTitle = config.featureText.captionsSubtitles,
+			chaptersTitle = config.featureText.captionsChapters,
 			total = player.trackFiles === null ? player.tracks.length : player.trackFiles.length
 		;
 
@@ -117,7 +116,7 @@ Object.assign(MediaElementPlayer.prototype, {
 							`value="none" checked disabled>` +
 						`<label class="${t.options.classPrefix}captions-selector-label ` +
 							`${t.options.classPrefix}captions-selected" ` +
-							`for="${player.id}_captions_none">${i18n.t('mejs.none')}</label>` +
+							`for="${player.id}_captions_none">${config.featureText.none}</label>` +
 					`</li>` +
 				`</ul>` +
 			`</div>`;

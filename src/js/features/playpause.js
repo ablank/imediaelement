@@ -3,7 +3,6 @@
 import document from 'global/document';
 import config from '../core/config';
 import MediaElementPlayer from '../player';
-import i18n from '../features/i18n';
 import {isString} from '../utils/general';
 import {addClass, removeClass} from '../utils/dom';
 
@@ -41,8 +40,8 @@ Object.assign(MediaElementPlayer.prototype, {
 		const
 			t = this,
 			op = t.options,
-			playTitle = isString(op.playText) ? op.playText : i18n.t('mejs.play'),
-			pauseTitle = isString(op.pauseText) ? op.pauseText : i18n.t('mejs.pause'),
+			playTitle =config.featureText.play,
+			pauseTitle = config.featureText.pause,
 			play = document.createElement('div')
 		;
 

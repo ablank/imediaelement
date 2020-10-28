@@ -6,7 +6,6 @@ import config from './core/config';
 import mejs from './core/mejs';
 import MediaElement from './core/mediaelement';
 import DefaultPlayer from './player/default';
-import i18n from './features/i18n';
 import {
 	IS_FIREFOX,
 	IS_IPAD,
@@ -159,7 +158,8 @@ class MediaElementPlayer {
 
 			// remove native controls
 			t.node.removeAttribute('controls');
-			const videoPlayerTitle = t.isVideo ? i18n.t('mejs.video-player') : i18n.t('mejs.audio-player');
+			const videoPlayerTitle = t.isVideo ? config.featureText.videoPlayer : config.featureText.audioPlayer;
+		
 			// insert description for screen readers
 			const offscreen = document.createElement('span');
 			offscreen.className = `${t.options.classPrefix}offscreen`;
@@ -824,7 +824,7 @@ class MediaElementPlayer {
 		if (!errorContent) {
 			const poster = t.media.originalNode.getAttribute('poster');
 			if (poster) {
-				imgError = `<img src="${poster}" alt="${mejs.i18n.t('mejs.download-file')}">`;
+				imgError = `<img src="${poster}" alt="${config.featureText.downloadFile}">`;
 			}
 
 			if (e.message) {
@@ -834,7 +834,7 @@ class MediaElementPlayer {
 			if (e.urls) {
 				for (let i = 0, total = e.urls.length; i < total; i++) {
 					const url = e.urls[i];
-					errorContent += `<a href="${url.src}" data-type="${url.type}"><span>${mejs.i18n.t('mejs.download-file')}: ${url.src}</span></a>`;
+					errorContent += `<a href="${url.src}" data-type="${url.type}"><span>${config.featureText.downloadFile}: ${url.src}</span></a>`;
 				}
 			}
 		}
@@ -1467,7 +1467,7 @@ class MediaElementPlayer {
 
 		bigPlay.className = `${t.options.classPrefix}overlay ${t.options.classPrefix}layer ${t.options.classPrefix}overlay-play`;
 		bigPlay.innerHTML = `<div class="${t.options.classPrefix}overlay-button" role="button" tabindex="0" ` +
-			`aria-label="${i18n.t('mejs.play')}" aria-pressed="false"></div>`;
+			`aria-label="${config.featureText.play}" aria-pressed="false"></div>`;
 		bigPlay.addEventListener('click', () => {
 			// Removed 'touchstart' due issues on Samsung Android devices where a tap on bigPlay
 			// started and immediately stopped the video

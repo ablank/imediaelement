@@ -3,7 +3,6 @@
 import window from 'global/window';
 import document from 'global/document';
 import config from '../core/config';
-import i18n from '../features/i18n';
 import MediaElementPlayer from '../player';
 import * as Features from '../utils/constants';
 import {isString, createEvent} from '../utils/general';
@@ -82,7 +81,7 @@ Object.assign(MediaElementPlayer.prototype, {
 
 		const
 			t = this,
-			fullscreenTitle = isString(t.options.fullscreenText) ? t.options.fullscreenText : i18n.t('mejs.fullscreen'),
+			fullscreenTitle = config.featureText.fullscreen,
 			fullscreenBtn = document.createElement('div')
 		;
 

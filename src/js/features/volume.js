@@ -3,7 +3,6 @@
 import document from 'global/document';
 import config from '../core/config';
 import MediaElementPlayer from '../player';
-import i18n from '../features/i18n';
 import {IS_ANDROID, IS_IOS} from '../utils/constants';
 import {isString, createEvent} from '../utils/general';
 import {addClass, removeClass, offset} from '../utils/dom';
@@ -68,9 +67,9 @@ Object.assign(MediaElementPlayer.prototype, {
 		const
 			t = this,
 			mode = (t.isVideo) ? t.options.videoVolume : t.options.audioVolume,
-			muteText = isString(t.options.muteText) ? t.options.muteText : i18n.t('mejs.mute'),
-			unmuteText = isString(t.options.unmuteText) ? t.options.unmuteText : i18n.t('mejs.unmute'),
-			volumeControlText = isString(t.options.allyVolumeControlText) ? t.options.allyVolumeControlText : i18n.t('mejs.volume-help-text'),
+			muteText = config.featureText.mute,
+			unmuteText = config.featureText.unmute,
+			volumeControlText = config.featureText.volumeHelpText,
 			mute = document.createElement('div')
 		;
 
@@ -79,7 +78,7 @@ Object.assign(MediaElementPlayer.prototype, {
 			`<button type="button" aria-controls="${t.id}" title="${muteText}" aria-label="${muteText}" tabindex="0"></button>` :
 			`<button type="button" aria-controls="${t.id}" title="${muteText}" aria-label="${muteText}" tabindex="0"></button>` +
 			`<a href="javascript:void(0);" class="${t.options.classPrefix}volume-slider" ` +
-				`aria-label="${i18n.t('mejs.volume-slider')}" aria-valuemin="0" aria-valuemax="100" role="slider" ` +
+				`aria-label="${config.featureText.volumeSlider}" aria-valuemin="0" aria-valuemax="100" role="slider" ` +
 				`aria-orientation="vertical">` +
 				`<span class="${t.options.classPrefix}offscreen">${volumeControlText}</span>` +
 				`<div class="${t.options.classPrefix}volume-total">` +
@@ -157,7 +156,7 @@ Object.assign(MediaElementPlayer.prototype, {
 			const anchor = document.createElement('a');
 			anchor.className = `${t.options.classPrefix}horizontal-volume-slider`;
 			anchor.href = 'javascript:void(0);';
-			anchor.setAttribute('aria-label', i18n.t('mejs.volume-slider'));
+			anchor.setAttribute('aria-label', config.featureText.volumeSlider);
 			anchor.setAttribute('aria-valuemin', 0);
 			anchor.setAttribute('aria-valuemax', 100);
 			anchor.setAttribute('aria-valuenow', 100);

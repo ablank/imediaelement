@@ -3,7 +3,7 @@
 import window from 'global/window';
 import document from 'global/document';
 import mejs from '../core/mejs';
-import i18n from '../features/i18n';
+import config from '../core/config';
 import {renderer} from '../core/renderer';
 import {createEvent} from '../utils/general';
 import {NAV, IS_IE, IS_EDGE} from '../utils/constants';
@@ -359,7 +359,7 @@ const FlashMediaElementRenderer = {
 				`<param name="wmode" value="transparent" />` +
 				`<param name="allowScriptAccess" value="${flash.options.shimScriptAccess}" />` +
 				`<param name="allowFullScreen" value="true" />` +
-				`<div>${i18n.t('mejs.install-flash')}</div>` +
+				`<div>${config.featureText.flashRequired}</div>` +
 				`</object>`;
 
 		} else {

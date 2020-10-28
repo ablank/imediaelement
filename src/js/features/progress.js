@@ -3,7 +3,6 @@
 import document from 'global/document';
 import config from '../core/config';
 import MediaElementPlayer from '../player';
-import i18n from '../features/i18n';
 import {IS_FIREFOX, IS_IOS, IS_ANDROID, SUPPORT_PASSIVE_EVENT} from '../utils/constants';
 import {secondsToTimeCode} from '../utils/time';
 import {offset, addClass, removeClass, hasClass} from '../utils/dom';
@@ -304,7 +303,7 @@ Object.assign(MediaElementPlayer.prototype, {
 			updateSlider = () => {
 				const
 					seconds = t.getCurrentTime(),
-					timeSliderText = i18n.t('mejs.time-slider'),
+					timeSliderText = config.featureText.timeSlider,
 					time = secondsToTimeCode(seconds, player.options.alwaysShowHours, player.options.showTimecodeFrameCount, player.options.framesPerSecond, player.options.secondsDecimalLength, player.options.timeFormat),
 					duration = t.getDuration()
 				;
@@ -534,7 +533,7 @@ Object.assign(MediaElementPlayer.prototype, {
 			} else if (!broadcast && t.options.forceLive) {
 				const label = document.createElement('span');
 				label.className = `${t.options.classPrefix}broadcast`;
-				label.innerText = i18n.t('mejs.live-broadcast');
+				label.innerText = config.featureText.liveBroadcast;
 				t.slider.style.display = 'none';
 				t.rail.appendChild(label);
 			}

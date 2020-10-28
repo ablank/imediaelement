@@ -82,27 +82,37 @@ export const config = {
   features: ['playpause', 'current', 'progress', 'duration', 'tracks', 'volume', 'fullscreen'],
   // 
   featureText: {
+	// core/mediaelement.js
+	downloadFile: "Download File",
+	// core/player.js
+    videoPlayer: "Video Player",
+	audioPlayer: "Audio Player",
+	// renderers/flash.js
+    flashRequired: "You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https://get.adobe.com/flashplayer/",
+	// features/playpause.js
     play: "Play",
-    pause: "Pause",
+	pause: "Pause",
+	// features/progress.js
     current: "Current",
     progress: "Progress",
     duration: "Duration",
-    tracks: "Tracks",
+	tracks: "Tracks",
+	// features/volume.js
     volumeSlider: "Volume Control",
-    mute: "Mute",
-    unmute: "Unmute",
-    fullscreen: "Fullscreen",
-    downloadFile: "Download File",
-    flashRequired: "You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https://get.adobe.com/flashplayer/",
-    timeSlider: "Play Time",
-    timeHelpText: "Use Left/Right Arrow keys to advance one second, Up/Down arrows to advance ten seconds.",
-    liveBroadcast: "Live Broadcast",
     volumeHelpText: "Use Up/Down Arrow keys to increase or decrease volume.",
-    videoPlayer: "Video Player",
-    audioPlayer: "Audio Player",
-    captionsSubtitles: 'Captions/Subtitles',
-    captionsChapters: 'Chapters',
+    mute: "Mute",
+	unmute: "Unmute",
+	// features/fullscreen.js
+	fullscreen: "Fullscreen",	
+	// features/progress.js
+	timeSlider: "Play Time",
+    timeHelpText: "Use Left/Right Arrow keys to advance one second, Up/Down arrows to advance ten seconds.",
+	liveBroadcast: "Live Broadcast",
+	// features/tracks.js
+    captionsSubtitles: "Captions/Subtitles",
+    captionsChapters: "Chapters",
 	none: "None",
+	// features/i18n.js
 	languages: []
   },
   // If set to `true`, all the default control elements listed in features above will be used, and the features will

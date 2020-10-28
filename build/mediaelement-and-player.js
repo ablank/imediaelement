@@ -277,119 +277,140 @@ module.exports = win;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 var config = exports.config = {
-	poster: '',
+  poster: '',
 
-	showPosterWhenEnded: false,
+  showPosterWhenEnded: false,
 
-	showPosterWhenPaused: false,
+  showPosterWhenPaused: false,
 
-	defaultVideoWidth: 480,
+  defaultVideoWidth: 480,
 
-	defaultVideoHeight: 270,
+  defaultVideoHeight: 270,
 
-	videoWidth: -1,
+  videoWidth: -1,
 
-	videoHeight: -1,
+  videoHeight: -1,
 
-	defaultAudioWidth: 400,
+  defaultAudioWidth: 400,
 
-	defaultAudioHeight: 40,
+  defaultAudioHeight: 40,
 
-	defaultSeekBackwardInterval: function defaultSeekBackwardInterval(media) {
-		return media.getDuration() * 0.05;
-	},
+  defaultSeekBackwardInterval: function defaultSeekBackwardInterval(media) {
+    return media.getDuration() * 0.05;
+  },
 
-	defaultSeekForwardInterval: function defaultSeekForwardInterval(media) {
-		return media.getDuration() * 0.05;
-	},
+  defaultSeekForwardInterval: function defaultSeekForwardInterval(media) {
+    return media.getDuration() * 0.05;
+  },
 
-	setDimensions: true,
+  setDimensions: true,
 
-	audioWidth: -1,
+  audioWidth: -1,
 
-	audioHeight: -1,
+  audioHeight: -1,
 
-	loop: false,
+  loop: false,
 
-	autoRewind: true,
+  autoRewind: true,
 
-	enableAutosize: true,
+  enableAutosize: true,
 
-	timeFormat: '',
+  timeFormat: '',
 
-	alwaysShowHours: false,
+  alwaysShowHours: false,
 
-	showTimecodeFrameCount: false,
+  showTimecodeFrameCount: false,
 
-	framesPerSecond: 25,
+  framesPerSecond: 25,
 
-	alwaysShowControls: false,
+  alwaysShowControls: false,
 
-	hideVideoControlsOnLoad: false,
+  hideVideoControlsOnLoad: false,
 
-	hideVideoControlsOnPause: false,
+  hideVideoControlsOnPause: false,
 
-	clickToPlayPause: true,
+  clickToPlayPause: true,
 
-	controlsTimeoutDefault: 1500,
+  controlsTimeoutDefault: 1500,
 
-	controlsTimeoutMouseEnter: 2500,
+  controlsTimeoutMouseEnter: 2500,
 
-	controlsTimeoutMouseLeave: 1000,
+  controlsTimeoutMouseLeave: 1000,
 
-	iPadUseNativeControls: false,
+  iPadUseNativeControls: false,
 
-	iPhoneUseNativeControls: false,
+  iPhoneUseNativeControls: false,
 
-	AndroidUseNativeControls: false,
+  AndroidUseNativeControls: false,
 
-	features: ['playpause', 'current', 'progress', 'duration', 'tracks', 'volume', 'fullscreen'],
+  features: ['playpause', 'current', 'progress', 'duration', 'tracks', 'volume', 'fullscreen'],
 
-	featureText: {
-		play: "Play",
-		pause: "Pause",
-		current: "Current",
-		progress: "Progress",
-		duration: "Duration",
-		tracks: "Tracks",
-		volume: "Volume",
-		mute: "Mute",
-		unmute: "Unmute",
-		fullscreen: "Fullscreen"
-	},
+  featureText: {
+    downloadFile: "Download File",
 
-	useDefaultControls: false,
+    videoPlayer: "Video Player",
+    audioPlayer: "Audio Player",
 
-	isVideo: true,
+    flashRequired: "You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https://get.adobe.com/flashplayer/",
 
-	stretching: 'auto',
+    play: "Play",
+    pause: "Pause",
 
-	classPrefix: 'mejs__',
+    current: "Current",
+    progress: "Progress",
+    duration: "Duration",
+    tracks: "Tracks",
 
-	enableKeyboard: true,
+    volumeSlider: "Volume Control",
+    volumeHelpText: "Use Up/Down Arrow keys to increase or decrease volume.",
+    mute: "Mute",
+    unmute: "Unmute",
 
-	pauseOtherPlayers: true,
+    fullscreen: "Fullscreen",
 
-	secondsDecimalLength: 0,
+    timeSlider: "Play Time",
+    timeHelpText: "Use Left/Right Arrow keys to advance one second, Up/Down arrows to advance ten seconds.",
+    liveBroadcast: "Live Broadcast",
 
-	customError: null,
+    captionsSubtitles: "Captions/Subtitles",
+    captionsChapters: "Chapters",
+    none: "None",
 
-	keyActions: [{
-		keys: [32, 179],
-		action: function action(player) {
+    languages: []
+  },
 
-			if (!IS_FIREFOX) {
-				if (player.paused || player.ended) {
-					player.play();
-				} else {
-					player.pause();
-				}
-			}
-		}
-	}]
+  useDefaultControls: false,
+
+  isVideo: true,
+
+  stretching: 'auto',
+
+  classPrefix: 'mejs__',
+
+  enableKeyboard: true,
+
+  pauseOtherPlayers: true,
+
+  secondsDecimalLength: 0,
+
+  customError: null,
+
+  keyActions: [{
+    keys: [32, 179],
+    action: function action(player) {
+
+      if (!IS_FIREFOX) {
+        if (player.paused || player.ended) {
+          player.play();
+        } else {
+          player.pause();
+        }
+      }
+    }
+  }]
 };
 
 exports.default = config;
@@ -415,13 +436,13 @@ var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _general = _dereq_(28);
+var _general = _dereq_(26);
 
-var _media2 = _dereq_(29);
+var _media2 = _dereq_(27);
 
 var _renderer = _dereq_(8);
 
-var _constants = _dereq_(26);
+var _constants = _dereq_(24);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -847,7 +868,7 @@ _mejs2.default.MediaElement = MediaElement;
 
 exports.default = MediaElement;
 
-},{"2":2,"26":26,"28":28,"29":29,"3":3,"7":7,"8":8}],7:[function(_dereq_,module,exports){
+},{"2":2,"24":24,"26":26,"27":27,"3":3,"7":7,"8":8}],7:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1008,23 +1029,19 @@ var _config = _dereq_(5);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _i18n = _dereq_(10);
-
-var _i18n2 = _interopRequireDefault(_i18n);
-
-var _player = _dereq_(17);
+var _player = _dereq_(15);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _constants = _dereq_(26);
+var _constants = _dereq_(24);
 
 var Features = _interopRequireWildcard(_constants);
 
-var _general = _dereq_(28);
+var _general = _dereq_(26);
 
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
-var _media = _dereq_(29);
+var _media = _dereq_(27);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -1061,7 +1078,7 @@ Object.assign(_player2.default.prototype, {
 		player.detectFullscreenMode();
 
 		var t = this,
-		    fullscreenTitle = (0, _general.isString)(t.options.fullscreenText) ? t.options.fullscreenText : _i18n2.default.t('mejs.fullscreen'),
+		    fullscreenTitle = _config2.default.featureText.fullscreen,
 		    fullscreenBtn = _document2.default.createElement('div');
 
 		fullscreenBtn.className = t.options.classPrefix + 'button ' + t.options.classPrefix + 'fullscreen-button';
@@ -1303,274 +1320,7 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"10":10,"17":17,"2":2,"26":26,"27":27,"28":28,"29":29,"3":3,"5":5}],10:[function(_dereq_,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _mejs = _dereq_(7);
-
-var _mejs2 = _interopRequireDefault(_mejs);
-
-var _en = _dereq_(16);
-
-var _general = _dereq_(28);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var i18n = { lang: 'en', en: _en.EN };
-
-i18n.language = function () {
-	for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-		args[_key] = arguments[_key];
-	}
-
-	if (args !== null && args !== undefined && args.length) {
-
-		if (typeof args[0] !== 'string') {
-			throw new TypeError('Language code must be a string value');
-		}
-
-		if (!/^[a-z]{2,3}((\-|_)[a-z]{2})?$/i.test(args[0])) {
-			throw new TypeError('Language code must have format 2-3 letters and. optionally, hyphen, underscore followed by 2 more letters');
-		}
-
-		i18n.lang = args[0];
-
-		if (i18n[args[0]] === undefined) {
-			args[1] = args[1] !== null && args[1] !== undefined && _typeof(args[1]) === 'object' ? args[1] : {};
-			i18n[args[0]] = !(0, _general.isObjectEmpty)(args[1]) ? args[1] : _en.EN;
-		} else if (args[1] !== null && args[1] !== undefined && _typeof(args[1]) === 'object') {
-			i18n[args[0]] = args[1];
-		}
-	}
-
-	return i18n.lang;
-};
-
-i18n.t = function (message) {
-	var pluralParam = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-
-	if (typeof message === 'string' && message.length) {
-
-		var str = void 0,
-		    pluralForm = void 0;
-
-		var language = i18n.language();
-
-		var _plural = function _plural(input, number, form) {
-
-			if ((typeof input === 'undefined' ? 'undefined' : _typeof(input)) !== 'object' || typeof number !== 'number' || typeof form !== 'number') {
-				return input;
-			}
-
-			var _pluralForms = function () {
-				return [function () {
-					return arguments.length <= 1 ? undefined : arguments[1];
-				}, function () {
-					return (arguments.length <= 0 ? undefined : arguments[0]) === 1 ? arguments.length <= 1 ? undefined : arguments[1] : arguments.length <= 2 ? undefined : arguments[2];
-				}, function () {
-					return (arguments.length <= 0 ? undefined : arguments[0]) === 0 || (arguments.length <= 0 ? undefined : arguments[0]) === 1 ? arguments.length <= 1 ? undefined : arguments[1] : arguments.length <= 2 ? undefined : arguments[2];
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 === 1 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 !== 11) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) !== 0) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1 || (arguments.length <= 0 ? undefined : arguments[0]) === 11) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 2 || (arguments.length <= 0 ? undefined : arguments[0]) === 12) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) > 2 && (arguments.length <= 0 ? undefined : arguments[0]) < 20) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 0 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 > 0 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 < 20) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 === 1 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 !== 11) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 >= 2 && ((arguments.length <= 0 ? undefined : arguments[0]) % 100 < 10 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 20)) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return [3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 === 1 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 !== 11) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 >= 2 && (arguments.length <= 0 ? undefined : arguments[0]) % 10 <= 4 && ((arguments.length <= 0 ? undefined : arguments[0]) % 100 < 10 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 20)) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) >= 2 && (arguments.length <= 0 ? undefined : arguments[0]) <= 4) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 >= 2 && (arguments.length <= 0 ? undefined : arguments[0]) % 10 <= 4 && ((arguments.length <= 0 ? undefined : arguments[0]) % 100 < 10 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 20)) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 === 1) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 === 2) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 === 3 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 === 4) {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					} else {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 2) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) > 2 && (arguments.length <= 0 ? undefined : arguments[0]) < 7) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) > 6 && (arguments.length <= 0 ? undefined : arguments[0]) < 11) {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					} else {
-						return arguments.length <= 5 ? undefined : arguments[5];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 0) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 2) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 3 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 <= 10) {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 11) {
-						return arguments.length <= 5 ? undefined : arguments[5];
-					} else {
-						return arguments.length <= 6 ? undefined : arguments[6];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 0 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 > 1 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 < 11) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 100 > 10 && (arguments.length <= 0 ? undefined : arguments[0]) % 100 < 20) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 === 2) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					return (arguments.length <= 0 ? undefined : arguments[0]) !== 11 && (arguments.length <= 0 ? undefined : arguments[0]) % 10 === 1 ? arguments.length <= 1 ? undefined : arguments[1] : arguments.length <= 2 ? undefined : arguments[2];
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) % 10 >= 2 && (arguments.length <= 0 ? undefined : arguments[0]) % 10 <= 4 && ((arguments.length <= 0 ? undefined : arguments[0]) % 100 < 10 || (arguments.length <= 0 ? undefined : arguments[0]) % 100 >= 20)) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 2) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) !== 8 && (arguments.length <= 0 ? undefined : arguments[0]) !== 11) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					}
-				}, function () {
-					return (arguments.length <= 0 ? undefined : arguments[0]) === 0 ? arguments.length <= 1 ? undefined : arguments[1] : arguments.length <= 2 ? undefined : arguments[2];
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 2) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 3) {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					} else {
-						return arguments.length <= 4 ? undefined : arguments[4];
-					}
-				}, function () {
-					if ((arguments.length <= 0 ? undefined : arguments[0]) === 0) {
-						return arguments.length <= 1 ? undefined : arguments[1];
-					} else if ((arguments.length <= 0 ? undefined : arguments[0]) === 1) {
-						return arguments.length <= 2 ? undefined : arguments[2];
-					} else {
-						return arguments.length <= 3 ? undefined : arguments[3];
-					}
-				}];
-			}();
-
-			return _pluralForms[form].apply(null, [number].concat(input));
-		};
-
-		if (i18n[language] !== undefined) {
-			str = i18n[language][message];
-			if (pluralParam !== null && typeof pluralParam === 'number') {
-				pluralForm = i18n[language]['mejs.plural-form'];
-				str = _plural.apply(null, [str, pluralParam, pluralForm]);
-			}
-		}
-
-		if (!str && i18n.en) {
-			str = i18n.en[message];
-			if (pluralParam !== null && typeof pluralParam === 'number') {
-				pluralForm = i18n.en['mejs.plural-form'];
-				str = _plural.apply(null, [str, pluralParam, pluralForm]);
-			}
-		}
-
-		str = str || message;
-
-		if (pluralParam !== null && typeof pluralParam === 'number') {
-			str = str.replace('%1', pluralParam);
-		}
-
-		return (0, _general.escapeHTML)(str);
-	}
-
-	return message;
-};
-
-_mejs2.default.i18n = i18n;
-
-if (typeof mejsL10n !== 'undefined') {
-	_mejs2.default.i18n.language(mejsL10n.language, mejsL10n.strings);
-}
-
-exports.default = i18n;
-
-},{"16":16,"28":28,"7":7}],11:[function(_dereq_,module,exports){
+},{"15":15,"2":2,"24":24,"25":25,"26":26,"27":27,"3":3,"5":5}],10:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -1581,17 +1331,13 @@ var _config = _dereq_(5);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _player = _dereq_(17);
+var _player = _dereq_(15);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _i18n = _dereq_(10);
+var _general = _dereq_(26);
 
-var _i18n2 = _interopRequireDefault(_i18n);
-
-var _general = _dereq_(28);
-
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1605,8 +1351,8 @@ Object.assign(_player2.default.prototype, {
 	buildplaypause: function buildplaypause(player, controls, layers, media) {
 		var t = this,
 		    op = t.options,
-		    playTitle = (0, _general.isString)(op.playText) ? op.playText : _i18n2.default.t('mejs.play'),
-		    pauseTitle = (0, _general.isString)(op.pauseText) ? op.pauseText : _i18n2.default.t('mejs.pause'),
+		    playTitle = _config2.default.featureText.play,
+		    pauseTitle = _config2.default.featureText.pause,
 		    play = _document2.default.createElement('div');
 
 		play.className = t.options.classPrefix + 'button ' + t.options.classPrefix + 'playpause-button ' + t.options.classPrefix + 'play';
@@ -1667,7 +1413,7 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"10":10,"17":17,"2":2,"27":27,"28":28,"5":5}],12:[function(_dereq_,module,exports){
+},{"15":15,"2":2,"25":25,"26":26,"5":5}],11:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -1678,19 +1424,15 @@ var _config = _dereq_(5);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _player = _dereq_(17);
+var _player = _dereq_(15);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _i18n = _dereq_(10);
+var _constants = _dereq_(24);
 
-var _i18n2 = _interopRequireDefault(_i18n);
+var _time = _dereq_(29);
 
-var _constants = _dereq_(26);
-
-var _time = _dereq_(31);
-
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1909,7 +1651,7 @@ Object.assign(_player2.default.prototype, {
 		},
 		    updateSlider = function updateSlider() {
 			var seconds = t.getCurrentTime(),
-			    timeSliderText = _i18n2.default.t('mejs.time-slider'),
+			    timeSliderText = _config2.default.featureText.timeSlider,
 			    time = (0, _time.secondsToTimeCode)(seconds, player.options.alwaysShowHours, player.options.showTimecodeFrameCount, player.options.framesPerSecond, player.options.secondsDecimalLength, player.options.timeFormat),
 			    duration = t.getDuration();
 
@@ -2125,7 +1867,7 @@ Object.assign(_player2.default.prototype, {
 			} else if (!broadcast && t.options.forceLive) {
 				var label = _document2.default.createElement('span');
 				label.className = t.options.classPrefix + 'broadcast';
-				label.innerText = _i18n2.default.t('mejs.live-broadcast');
+				label.innerText = _config2.default.featureText.liveBroadcast;
 				t.slider.style.display = 'none';
 				t.rail.appendChild(label);
 			}
@@ -2241,7 +1983,7 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"10":10,"17":17,"2":2,"26":26,"27":27,"31":31,"5":5}],13:[function(_dereq_,module,exports){
+},{"15":15,"2":2,"24":24,"25":25,"29":29,"5":5}],12:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -2252,13 +1994,13 @@ var _config = _dereq_(5);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _player = _dereq_(17);
+var _player = _dereq_(15);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _time = _dereq_(31);
+var _time = _dereq_(29);
 
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2367,7 +2109,7 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"17":17,"2":2,"27":27,"31":31,"5":5}],14:[function(_dereq_,module,exports){
+},{"15":15,"2":2,"25":25,"29":29,"5":5}],13:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -2378,23 +2120,19 @@ var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _i18n = _dereq_(10);
-
-var _i18n2 = _interopRequireDefault(_i18n);
-
 var _config = _dereq_(5);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _player = _dereq_(17);
+var _player = _dereq_(15);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _time = _dereq_(31);
+var _time = _dereq_(29);
 
-var _general = _dereq_(28);
+var _general = _dereq_(26);
 
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2427,8 +2165,8 @@ Object.assign(_player2.default.prototype, {
 
 		var t = this,
 		    attr = t.options.tracksAriaLive ? ' role="log" aria-live="assertive" aria-atomic="false"' : '',
-		    tracksTitle = (0, _general.isString)(t.options.tracksText) ? t.options.tracksText : _i18n2.default.t('mejs.captions-subtitles'),
-		    chaptersTitle = (0, _general.isString)(t.options.chaptersText) ? t.options.chaptersText : _i18n2.default.t('mejs.captions-chapters'),
+		    tracksTitle = _config2.default.featureText.captionsSubtitles,
+		    chaptersTitle = _config2.default.featureText.captionsChapters,
 		    total = player.trackFiles === null ? player.tracks.length : player.trackFiles.length;
 
 		if (t.domNode.textTracks) {
@@ -2449,7 +2187,7 @@ Object.assign(_player2.default.prototype, {
 
 		player.captionsButton = _document2.default.createElement('div');
 		player.captionsButton.className = t.options.classPrefix + 'button ' + t.options.classPrefix + 'captions-button';
-		player.captionsButton.innerHTML = '<button type="button" aria-controls="' + t.id + '" title="' + tracksTitle + '" aria-label="' + tracksTitle + '" tabindex="0"></button>' + ('<div class="' + t.options.classPrefix + 'captions-selector ' + t.options.classPrefix + 'offscreen">') + ('<ul class="' + t.options.classPrefix + 'captions-selector-list">') + ('<li class="' + t.options.classPrefix + 'captions-selector-list-item">') + ('<input type="radio" class="' + t.options.classPrefix + 'captions-selector-input" ') + ('name="' + player.id + '_captions" id="' + player.id + '_captions_none" ') + 'value="none" checked disabled>' + ('<label class="' + t.options.classPrefix + 'captions-selector-label ') + (t.options.classPrefix + 'captions-selected" ') + ('for="' + player.id + '_captions_none">' + _i18n2.default.t('mejs.none') + '</label>') + '</li>' + '</ul>' + '</div>';
+		player.captionsButton.innerHTML = '<button type="button" aria-controls="' + t.id + '" title="' + tracksTitle + '" aria-label="' + tracksTitle + '" tabindex="0"></button>' + ('<div class="' + t.options.classPrefix + 'captions-selector ' + t.options.classPrefix + 'offscreen">') + ('<ul class="' + t.options.classPrefix + 'captions-selector-list">') + ('<li class="' + t.options.classPrefix + 'captions-selector-list-item">') + ('<input type="radio" class="' + t.options.classPrefix + 'captions-selector-input" ') + ('name="' + player.id + '_captions" id="' + player.id + '_captions_none" ') + 'value="none" checked disabled>' + ('<label class="' + t.options.classPrefix + 'captions-selector-label ') + (t.options.classPrefix + 'captions-selected" ') + ('for="' + player.id + '_captions_none">' + _config2.default.featureText.none + '</label>') + '</li>' + '</ul>' + '</div>';
 
 		t.addControlElement(player.captionsButton, 'tracks');
 
@@ -2725,7 +2463,7 @@ Object.assign(_player2.default.prototype, {
 		var label = track.label;
 
 		if (label === '') {
-			label = _i18n2.default.t(_mejs2.default.language.codes[lang]) || lang;
+			label = i18n.t(_mejs2.default.language.codes[lang]) || lang;
 		}
 		target.disabled = false;
 		var targetSiblings = (0, _dom.siblings)(target, function (el) {
@@ -2753,7 +2491,7 @@ Object.assign(_player2.default.prototype, {
 	addTrackButton: function addTrackButton(trackId, lang, label) {
 		var t = this;
 		if (label === '') {
-			label = _i18n2.default.t(_mejs2.default.language.codes[lang]) || lang;
+			label = i18n.t(_mejs2.default.language.codes[lang]) || lang;
 		}
 
 		t.captionsButton.querySelector('ul').innerHTML += '<li class="' + t.options.classPrefix + 'captions-selector-list-item">' + ('<input type="radio" class="' + t.options.classPrefix + 'captions-selector-input" ') + ('name="' + t.id + '_captions" id="' + trackId + '" value="' + trackId + '" disabled>') + ('<label class="' + t.options.classPrefix + 'captions-selector-label"') + ('for="' + trackId + '">' + label + ' (loading)</label>') + '</li>';
@@ -3135,7 +2873,7 @@ _mejs2.default.TrackFormatParser = {
 	}
 };
 
-},{"10":10,"17":17,"2":2,"27":27,"28":28,"31":31,"5":5,"7":7}],15:[function(_dereq_,module,exports){
+},{"15":15,"2":2,"25":25,"26":26,"29":29,"5":5,"7":7}],14:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -3146,19 +2884,15 @@ var _config = _dereq_(5);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _player = _dereq_(17);
+var _player = _dereq_(15);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _i18n = _dereq_(10);
+var _constants = _dereq_(24);
 
-var _i18n2 = _interopRequireDefault(_i18n);
+var _general = _dereq_(26);
 
-var _constants = _dereq_(26);
-
-var _general = _dereq_(28);
-
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3186,13 +2920,13 @@ Object.assign(_player2.default.prototype, {
 
 		var t = this,
 		    mode = t.isVideo ? t.options.videoVolume : t.options.audioVolume,
-		    muteText = (0, _general.isString)(t.options.muteText) ? t.options.muteText : _i18n2.default.t('mejs.mute'),
-		    unmuteText = (0, _general.isString)(t.options.unmuteText) ? t.options.unmuteText : _i18n2.default.t('mejs.unmute'),
-		    volumeControlText = (0, _general.isString)(t.options.allyVolumeControlText) ? t.options.allyVolumeControlText : _i18n2.default.t('mejs.volume-help-text'),
+		    muteText = _config2.default.featureText.mute,
+		    unmuteText = _config2.default.featureText.unmute,
+		    volumeControlText = _config2.default.featureText.volumeHelpText,
 		    mute = _document2.default.createElement('div');
 
 		mute.className = t.options.classPrefix + 'button ' + t.options.classPrefix + 'volume-button ' + t.options.classPrefix + 'mute';
-		mute.innerHTML = mode === 'horizontal' ? '<button type="button" aria-controls="' + t.id + '" title="' + muteText + '" aria-label="' + muteText + '" tabindex="0"></button>' : '<button type="button" aria-controls="' + t.id + '" title="' + muteText + '" aria-label="' + muteText + '" tabindex="0"></button>' + ('<a href="javascript:void(0);" class="' + t.options.classPrefix + 'volume-slider" ') + ('aria-label="' + _i18n2.default.t('mejs.volume-slider') + '" aria-valuemin="0" aria-valuemax="100" role="slider" ') + 'aria-orientation="vertical">' + ('<span class="' + t.options.classPrefix + 'offscreen">' + volumeControlText + '</span>') + ('<div class="' + t.options.classPrefix + 'volume-total">') + ('<div class="' + t.options.classPrefix + 'volume-current"></div>') + ('<div class="' + t.options.classPrefix + 'volume-handle"></div>') + '</div>' + '</a>';
+		mute.innerHTML = mode === 'horizontal' ? '<button type="button" aria-controls="' + t.id + '" title="' + muteText + '" aria-label="' + muteText + '" tabindex="0"></button>' : '<button type="button" aria-controls="' + t.id + '" title="' + muteText + '" aria-label="' + muteText + '" tabindex="0"></button>' + ('<a href="javascript:void(0);" class="' + t.options.classPrefix + 'volume-slider" ') + ('aria-label="' + _config2.default.featureText.volumeSlider + '" aria-valuemin="0" aria-valuemax="100" role="slider" ') + 'aria-orientation="vertical">' + ('<span class="' + t.options.classPrefix + 'offscreen">' + volumeControlText + '</span>') + ('<div class="' + t.options.classPrefix + 'volume-total">') + ('<div class="' + t.options.classPrefix + 'volume-current"></div>') + ('<div class="' + t.options.classPrefix + 'volume-handle"></div>') + '</div>' + '</a>';
 
 		t.addControlElement(mute, 'volume');
 
@@ -3258,7 +2992,7 @@ Object.assign(_player2.default.prototype, {
 			var anchor = _document2.default.createElement('a');
 			anchor.className = t.options.classPrefix + 'horizontal-volume-slider';
 			anchor.href = 'javascript:void(0);';
-			anchor.setAttribute('aria-label', _i18n2.default.t('mejs.volume-slider'));
+			anchor.setAttribute('aria-label', _config2.default.featureText.volumeSlider);
 			anchor.setAttribute('aria-valuemin', 0);
 			anchor.setAttribute('aria-valuemax', 100);
 			anchor.setAttribute('aria-valuenow', 100);
@@ -3512,97 +3246,7 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"10":10,"17":17,"2":2,"26":26,"27":27,"28":28,"5":5}],16:[function(_dereq_,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var EN = exports.EN = {
-	'mejs.plural-form': 1,
-
-	'mejs.download-file': 'Download File',
-
-	'mejs.install-flash': 'You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https://get.adobe.com/flashplayer/',
-
-	'mejs.fullscreen': 'Fullscreen',
-
-	'mejs.play': 'Play',
-	'mejs.pause': 'Pause',
-
-	'mejs.time-slider': 'Time Slider',
-	'mejs.time-help-text': 'Use Left/Right Arrow keys to advance one second, Up/Down arrows to advance ten seconds.',
-	'mejs.live-broadcast': 'Live Broadcast',
-
-	'mejs.volume-help-text': 'Use Up/Down Arrow keys to increase or decrease volume.',
-	'mejs.unmute': 'Unmute',
-	'mejs.mute': 'Mute',
-	'mejs.volume-slider': 'Volume Slider',
-
-	'mejs.video-player': 'Video Player',
-	'mejs.audio-player': 'Audio Player',
-
-	'mejs.captions-subtitles': 'Captions/Subtitles',
-	'mejs.captions-chapters': 'Chapters',
-	'mejs.none': 'None',
-	'mejs.afrikaans': 'Afrikaans',
-	'mejs.albanian': 'Albanian',
-	'mejs.arabic': 'Arabic',
-	'mejs.belarusian': 'Belarusian',
-	'mejs.bulgarian': 'Bulgarian',
-	'mejs.catalan': 'Catalan',
-	'mejs.chinese': 'Chinese',
-	'mejs.chinese-simplified': 'Chinese (Simplified)',
-	'mejs.chinese-traditional': 'Chinese (Traditional)',
-	'mejs.croatian': 'Croatian',
-	'mejs.czech': 'Czech',
-	'mejs.danish': 'Danish',
-	'mejs.dutch': 'Dutch',
-	'mejs.english': 'English',
-	'mejs.estonian': 'Estonian',
-	'mejs.filipino': 'Filipino',
-	'mejs.finnish': 'Finnish',
-	'mejs.french': 'French',
-	'mejs.galician': 'Galician',
-	'mejs.german': 'German',
-	'mejs.greek': 'Greek',
-	'mejs.haitian-creole': 'Haitian Creole',
-	'mejs.hebrew': 'Hebrew',
-	'mejs.hindi': 'Hindi',
-	'mejs.hungarian': 'Hungarian',
-	'mejs.icelandic': 'Icelandic',
-	'mejs.indonesian': 'Indonesian',
-	'mejs.irish': 'Irish',
-	'mejs.italian': 'Italian',
-	'mejs.japanese': 'Japanese',
-	'mejs.korean': 'Korean',
-	'mejs.latvian': 'Latvian',
-	'mejs.lithuanian': 'Lithuanian',
-	'mejs.macedonian': 'Macedonian',
-	'mejs.malay': 'Malay',
-	'mejs.maltese': 'Maltese',
-	'mejs.norwegian': 'Norwegian',
-	'mejs.persian': 'Persian',
-	'mejs.polish': 'Polish',
-	'mejs.portuguese': 'Portuguese',
-	'mejs.romanian': 'Romanian',
-	'mejs.russian': 'Russian',
-	'mejs.serbian': 'Serbian',
-	'mejs.slovak': 'Slovak',
-	'mejs.slovenian': 'Slovenian',
-	'mejs.spanish': 'Spanish',
-	'mejs.swahili': 'Swahili',
-	'mejs.swedish': 'Swedish',
-	'mejs.tagalog': 'Tagalog',
-	'mejs.thai': 'Thai',
-	'mejs.turkish': 'Turkish',
-	'mejs.ukrainian': 'Ukrainian',
-	'mejs.vietnamese': 'Vietnamese',
-	'mejs.welsh': 'Welsh',
-	'mejs.yiddish': 'Yiddish'
-};
-
-},{}],17:[function(_dereq_,module,exports){
+},{"15":15,"2":2,"24":24,"25":25,"26":26,"5":5}],15:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3633,23 +3277,19 @@ var _mediaelement = _dereq_(6);
 
 var _mediaelement2 = _interopRequireDefault(_mediaelement);
 
-var _default = _dereq_(18);
+var _default = _dereq_(16);
 
 var _default2 = _interopRequireDefault(_default);
 
-var _i18n = _dereq_(10);
+var _constants = _dereq_(24);
 
-var _i18n2 = _interopRequireDefault(_i18n);
+var _general = _dereq_(26);
 
-var _constants = _dereq_(26);
+var _time = _dereq_(29);
 
-var _general = _dereq_(28);
+var _media = _dereq_(27);
 
-var _time = _dereq_(31);
-
-var _media = _dereq_(29);
-
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
 var dom = _interopRequireWildcard(_dom);
 
@@ -3765,7 +3405,7 @@ var MediaElementPlayer = function () {
 				}
 			} else if ((t.isVideo || !t.isVideo && (t.options.features.length || t.options.useDefaultControls)) && !(_constants.IS_ANDROID && t.options.AndroidUseNativeControls)) {
 				t.node.removeAttribute('controls');
-				var videoPlayerTitle = t.isVideo ? _i18n2.default.t('mejs.video-player') : _i18n2.default.t('mejs.audio-player');
+				var videoPlayerTitle = t.isVideo ? _config2.default.featureText.videoPlayer : _config2.default.featureText.audioPlayer;
 
 				var offscreen = _document2.default.createElement('span');
 				offscreen.className = t.options.classPrefix + 'offscreen';
@@ -4342,7 +3982,7 @@ var MediaElementPlayer = function () {
 			if (!errorContent) {
 				var poster = t.media.originalNode.getAttribute('poster');
 				if (poster) {
-					imgError = '<img src="' + poster + '" alt="' + _mejs2.default.i18n.t('mejs.download-file') + '">';
+					imgError = '<img src="' + poster + '" alt="' + _config2.default.featureText.downloadFile + '">';
 				}
 
 				if (e.message) {
@@ -4352,7 +3992,7 @@ var MediaElementPlayer = function () {
 				if (e.urls) {
 					for (var i = 0, total = e.urls.length; i < total; i++) {
 						var url = e.urls[i];
-						errorContent += '<a href="' + url.src + '" data-type="' + url.type + '"><span>' + _mejs2.default.i18n.t('mejs.download-file') + ': ' + url.src + '</span></a>';
+						errorContent += '<a href="' + url.src + '" data-type="' + url.type + '"><span>' + _config2.default.featureText.downloadFile + ': ' + url.src + '</span></a>';
 					}
 				}
 			}
@@ -4940,7 +4580,7 @@ var MediaElementPlayer = function () {
 			layers.appendChild(error);
 
 			bigPlay.className = t.options.classPrefix + 'overlay ' + t.options.classPrefix + 'layer ' + t.options.classPrefix + 'overlay-play';
-			bigPlay.innerHTML = '<div class="' + t.options.classPrefix + 'overlay-button" role="button" tabindex="0" ' + ('aria-label="' + _i18n2.default.t('mejs.play') + '" aria-pressed="false"></div>');
+			bigPlay.innerHTML = '<div class="' + t.options.classPrefix + 'overlay-button" role="button" tabindex="0" ' + ('aria-label="' + _config2.default.featureText.play + '" aria-pressed="false"></div>');
 			bigPlay.addEventListener('click', function () {
 				if (t.options.clickToPlayPause) {
 
@@ -5344,7 +4984,7 @@ _mejs2.default.MediaElementPlayer = MediaElementPlayer;
 
 exports.default = MediaElementPlayer;
 
-},{"10":10,"18":18,"2":2,"26":26,"27":27,"28":28,"29":29,"3":3,"31":31,"5":5,"6":6,"7":7}],18:[function(_dereq_,module,exports){
+},{"16":16,"2":2,"24":24,"25":25,"26":26,"27":27,"29":29,"3":3,"5":5,"6":6,"7":7}],16:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5525,7 +5165,7 @@ exports.default = DefaultPlayer;
 
 _window2.default.DefaultPlayer = DefaultPlayer;
 
-},{"3":3}],19:[function(_dereq_,module,exports){
+},{"3":3}],17:[function(_dereq_,module,exports){
 'use strict';
 
 var _window = _dereq_(3);
@@ -5536,7 +5176,7 @@ var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _player = _dereq_(17);
+var _player = _dereq_(15);
 
 var _player2 = _interopRequireDefault(_player);
 
@@ -5575,7 +5215,7 @@ if (typeof jQuery !== 'undefined') {
 	}
 })(_mejs2.default.$);
 
-},{"17":17,"3":3,"7":7}],20:[function(_dereq_,module,exports){
+},{"15":15,"3":3,"7":7}],18:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -5590,13 +5230,13 @@ var _mejs2 = _interopRequireDefault(_mejs);
 
 var _renderer = _dereq_(8);
 
-var _general = _dereq_(28);
+var _general = _dereq_(26);
 
-var _media = _dereq_(29);
+var _media = _dereq_(27);
 
-var _constants = _dereq_(26);
+var _constants = _dereq_(24);
 
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5822,7 +5462,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(DashNativeRenderer);
 
-},{"26":26,"27":27,"28":28,"29":29,"3":3,"7":7,"8":8}],21:[function(_dereq_,module,exports){
+},{"24":24,"25":25,"26":26,"27":27,"3":3,"7":7,"8":8}],19:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5844,17 +5484,17 @@ var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _i18n = _dereq_(10);
+var _config = _dereq_(5);
 
-var _i18n2 = _interopRequireDefault(_i18n);
+var _config2 = _interopRequireDefault(_config);
 
 var _renderer = _dereq_(8);
 
-var _general = _dereq_(28);
+var _general = _dereq_(26);
 
-var _constants = _dereq_(26);
+var _constants = _dereq_(24);
 
-var _media = _dereq_(29);
+var _media = _dereq_(27);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6098,7 +5738,7 @@ var FlashMediaElementRenderer = {
 				settings.push('style="clip: rect(0 0 0 0); position: absolute;"');
 			}
 
-			specialIEContainer.outerHTML = '<object ' + settings.join(' ') + '>' + ('<param name="movie" value="' + flash.options.pluginPath + flash.options.filename + '?x=' + new Date() + '" />') + ('<param name="flashvars" value="' + flashVars.join('&amp;') + '" />') + '<param name="quality" value="high" />' + '<param name="bgcolor" value="#000000" />' + '<param name="wmode" value="transparent" />' + ('<param name="allowScriptAccess" value="' + flash.options.shimScriptAccess + '" />') + '<param name="allowFullScreen" value="true" />' + ('<div>' + _i18n2.default.t('mejs.install-flash') + '</div>') + '</object>';
+			specialIEContainer.outerHTML = '<object ' + settings.join(' ') + '>' + ('<param name="movie" value="' + flash.options.pluginPath + flash.options.filename + '?x=' + new Date() + '" />') + ('<param name="flashvars" value="' + flashVars.join('&amp;') + '" />') + '<param name="quality" value="high" />' + '<param name="bgcolor" value="#000000" />' + '<param name="wmode" value="transparent" />' + ('<param name="allowScriptAccess" value="' + flash.options.shimScriptAccess + '" />') + '<param name="allowFullScreen" value="true" />' + ('<div>' + _config2.default.featureText.flashRequired + '</div>') + '</object>';
 		} else {
 
 			settings = ['id="__' + flash.id + '"', 'name="__' + flash.id + '"', 'play="true"', 'loop="false"', 'quality="high"', 'bgcolor="#000000"', 'wmode="transparent"', 'allowScriptAccess="' + flash.options.shimScriptAccess + '"', 'allowFullScreen="true"', 'type="application/x-shockwave-flash"', 'pluginspage="//www.macromedia.com/go/getflashplayer"', 'src="' + flash.options.pluginPath + flash.options.filename + '"', 'flashvars="' + flashVars.join('&') + '"'];
@@ -6264,7 +5904,7 @@ if (hasFlash) {
 	_renderer.renderer.add(FlashMediaElementAudioOggRenderer);
 }
 
-},{"10":10,"2":2,"26":26,"28":28,"29":29,"3":3,"7":7,"8":8}],22:[function(_dereq_,module,exports){
+},{"2":2,"24":24,"26":26,"27":27,"3":3,"5":5,"7":7,"8":8}],20:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -6279,13 +5919,13 @@ var _mejs2 = _interopRequireDefault(_mejs);
 
 var _renderer = _dereq_(8);
 
-var _general = _dereq_(28);
+var _general = _dereq_(26);
 
-var _constants = _dereq_(26);
+var _constants = _dereq_(24);
 
-var _media = _dereq_(29);
+var _media = _dereq_(27);
 
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6513,7 +6153,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(FlvNativeRenderer);
 
-},{"26":26,"27":27,"28":28,"29":29,"3":3,"7":7,"8":8}],23:[function(_dereq_,module,exports){
+},{"24":24,"25":25,"26":26,"27":27,"3":3,"7":7,"8":8}],21:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -6528,13 +6168,13 @@ var _mejs2 = _interopRequireDefault(_mejs);
 
 var _renderer = _dereq_(8);
 
-var _general = _dereq_(28);
+var _general = _dereq_(26);
 
-var _constants = _dereq_(26);
+var _constants = _dereq_(24);
 
-var _media = _dereq_(29);
+var _media = _dereq_(27);
 
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6802,7 +6442,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(HlsNativeRenderer);
 
-},{"26":26,"27":27,"28":28,"29":29,"3":3,"7":7,"8":8}],24:[function(_dereq_,module,exports){
+},{"24":24,"25":25,"26":26,"27":27,"3":3,"7":7,"8":8}],22:[function(_dereq_,module,exports){
 'use strict';
 
 var _window = _dereq_(3);
@@ -6819,9 +6459,9 @@ var _mejs2 = _interopRequireDefault(_mejs);
 
 var _renderer = _dereq_(8);
 
-var _general = _dereq_(28);
+var _general = _dereq_(26);
 
-var _constants = _dereq_(26);
+var _constants = _dereq_(24);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6949,7 +6589,7 @@ _window2.default.HtmlMediaElement = _mejs2.default.HtmlMediaElement = HtmlMediaE
 
 _renderer.renderer.add(HtmlMediaElement);
 
-},{"2":2,"26":26,"28":28,"3":3,"7":7,"8":8}],25:[function(_dereq_,module,exports){
+},{"2":2,"24":24,"26":26,"3":3,"7":7,"8":8}],23:[function(_dereq_,module,exports){
 'use strict';
 
 var _window = _dereq_(3);
@@ -6966,11 +6606,11 @@ var _mejs2 = _interopRequireDefault(_mejs);
 
 var _renderer = _dereq_(8);
 
-var _general = _dereq_(28);
+var _general = _dereq_(26);
 
-var _media = _dereq_(29);
+var _media = _dereq_(27);
 
-var _dom = _dereq_(27);
+var _dom = _dereq_(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7488,7 +7128,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(YouTubeIframeRenderer);
 
-},{"2":2,"27":27,"28":28,"29":29,"3":3,"7":7,"8":8}],26:[function(_dereq_,module,exports){
+},{"2":2,"25":25,"26":26,"27":27,"3":3,"7":7,"8":8}],24:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7674,7 +7314,7 @@ _mejs2.default.Features.isFullScreen = isFullScreen;
 _mejs2.default.Features.requestFullScreen = requestFullScreen;
 _mejs2.default.Features.cancelFullScreen = cancelFullScreen;
 
-},{"2":2,"3":3,"7":7}],27:[function(_dereq_,module,exports){
+},{"2":2,"3":3,"7":7}],25:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7903,7 +7543,7 @@ _mejs2.default.Utils.visible = visible;
 _mejs2.default.Utils.ajax = ajax;
 _mejs2.default.Utils.loadScript = loadScript;
 
-},{"2":2,"3":3,"7":7}],28:[function(_dereq_,module,exports){
+},{"2":2,"3":3,"7":7}],26:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8039,7 +7679,7 @@ _mejs2.default.Utils.createEvent = createEvent;
 _mejs2.default.Utils.isNodeAfter = isNodeAfter;
 _mejs2.default.Utils.isString = isString;
 
-},{"7":7}],29:[function(_dereq_,module,exports){
+},{"7":7}],27:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8057,7 +7697,7 @@ var _mejs = _dereq_(7);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _general = _dereq_(28);
+var _general = _dereq_(26);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8164,7 +7804,7 @@ _mejs2.default.Utils.getTypeFromFile = getTypeFromFile;
 _mejs2.default.Utils.getExtension = getExtension;
 _mejs2.default.Utils.normalizeExtension = normalizeExtension;
 
-},{"28":28,"7":7}],30:[function(_dereq_,module,exports){
+},{"26":26,"7":7}],28:[function(_dereq_,module,exports){
 'use strict';
 
 var _document = _dereq_(2);
@@ -8317,7 +7957,7 @@ if (!window.Promise) {
 	}
 })(window.Node || window.Element);
 
-},{"2":2,"4":4}],31:[function(_dereq_,module,exports){
+},{"2":2,"4":4}],29:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8570,4 +8210,4 @@ _mejs2.default.Utils.timeCodeToSeconds = timeCodeToSeconds;
 _mejs2.default.Utils.calculateTimeFormat = calculateTimeFormat;
 _mejs2.default.Utils.convertSMPTEtoSeconds = convertSMPTEtoSeconds;
 
-},{"7":7}]},{},[30,6,24,21,20,22,23,25,17,19,18,9,11,12,13,14,15]);
+},{"7":7}]},{},[28,6,22,19,18,20,21,23,15,17,16,9,10,11,12,13,14]);
