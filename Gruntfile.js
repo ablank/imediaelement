@@ -29,8 +29,10 @@ module.exports = function (grunt) {
       }
     });
   }
+/**/
 
   grunt.initConfig({
+
     pkg: grunt.file.readJSON('package.json'),
 
     watch: {
@@ -62,7 +64,7 @@ module.exports = function (grunt) {
         expand: true,
         flatten: true,
         cwd: 'src/js/languages/',
-        src: ['*.js'],
+        src: ['**/*.js'],
         dest: 'build/lang/',
         filter: 'isFile',
         options: {
@@ -150,12 +152,13 @@ module.exports = function (grunt) {
     concat: {
       dist: {
         options: {
-          banner: grunt.file.read('src/js/header.js')
+          //banner: grunt.file.read('src/js/header.js')
         },
         expand: true,
         cwd: 'build/',
         src: ['**/*.js', '!lang/*.js', '!jquery.js', '!**/*.min.js'],
-        ext: '.js'
+        ext: '.js',
+        dest: 'build/'
       }
     },
 
